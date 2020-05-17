@@ -1,0 +1,14 @@
+{
+    "host": "localhost:3000",
+    "connection": "keep-alive",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36",
+    "dnt": "1",
+    "accept": "image/webp,image/apng,image/*,*/*;q=0.8",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-mode": "no-cors",
+    "sec-fetch-dest": "empty",
+    "referer": "http://localhost:3000/",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+    "cookie": "username-localhost-8888=\"2|1:0|10:1588323172|23:username-localhost-8888|44:OTJlNzc2ZDk4MWVjNDA4NWE5NDVjYWMyNzVhYjk5NTE=|39cf55a40ba3f1bd329afb1f3efc25a6c0fb498600add869e6d08e5274ca5049\"; _xsrf=2|9b21d2c7|7705bacdda29134697519ac2c1aa9d7f|1588323172"
+}

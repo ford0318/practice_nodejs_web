@@ -1,0 +1,83 @@
+<%- include('parts/head.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<style>
+  small.form-text {
+    color:red;
+  }
+
+
+</style>
+
+
+
+<div class="container">
+<% if(typeof success!=='undefined'){ %>
+<div class="alert alert-<%= infotype %>" role="alert">
+<%= info %>
+</div>
+<% } %>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <form method="POST" name='form01' onsubmit="return checkForm()">
+                <div class="form-group">
+                  <label for="sales_id">Sales ID</label>
+                  <input type="text" class="form-control" id="sales_id" name="sales_id" >
+                  <small id="sale_id_sm" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="name">Sales Name</label>
+                  <input type="text" class="form-control" id="name" name="name" >
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Sales Birthday</label>
+                    <input type="text" class="form-control" id="birthday" name="birthday"  >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+</div>
+<script>
+  var $sales_id = $('#sales_id');
+  var $name = $('#name');
+  var $birthday = $('#birthdat');
+  var fields = [$sales_id,$name,$birthday];
+
+  function checkForm(){
+    //回復表格顏色
+    fields.forEach(function(val){
+      val.css('border', '1px solid #CCCCCC');
+      val.next().text('');
+    });
+
+    //驗證表格內容
+    var isPass = true;
+    if(!/[A-Z]\d{3}/.test($sales_id.val())){
+      isPass = false;
+      $sales_id.css('border','1px solid red');
+      $sales_id.next().text('員工編號不符合格式');
+    }
+
+    if($name.val().length < 2){
+      isPass = false;
+      $name.css('border','1px solid red');
+      $name.next().text('姓名異常');
+    }
+
+    if(/\d{4}-\d{2}-\d{2}/.test($birthday.val())){
+      isPass = false;
+      $sales_id.css('border','1px solid red');
+      $sales_id.next().text('員工生日不符合格式');
+    }
+  //  $.post('/sales3/add-ajax',$(document.forms[0]).serialize(),function(data){
+  //    console.log(data);
+  //  },'json');
+    return false;
+  }
+</script>
+<%- include('parts/foot') %>

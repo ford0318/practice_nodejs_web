@@ -1,0 +1,23 @@
+<%- include('parts/head.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0; i < sales.length; i++) { %>
+            <tr class="row-hover">
+                <td> <%= sales[i].id %> </td>
+                <td> <%= sales[i].name %> </td>
+                <td> <%= sales[i].age %> </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<%- include('parts/foot') %>

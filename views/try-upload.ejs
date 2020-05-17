@@ -1,0 +1,64 @@
+<%- include('parts/head.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<div class="container">
+    <% if(locals.result){ %>
+    <div class="card" style="width: 18rem;">
+        <img src="<%= avatar %>" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title"> <%= name %> </h5>
+        </div>
+    </div>
+    <% } %>
+
+
+    <div class="col-lg-6">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="name" name="name" id="" class='form-control'>
+            </div>
+            <div class="form-group">
+                <label for="avatar">大頭貼</label>
+                <button type="button" class='btn btn-primary' onclick='triggerUp()'>upload</button>
+                <input type="file" name='avatar' id="imgInp" class='form-control' style="display: none;">
+                <span id="filename"></span>
+
+            </div>
+            <button type="submit" class='btn btn-primary'>送出!</button>
+        </form>
+    </div>
+
+    <img id="preview_progressbarTW_img" src="#" style="display:none" />
+</div>
+<script>
+    function triggerUp() {
+        $('#imgInp').click();
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#preview_progressbarTW_img").attr('src', e.target.result);
+                $("#preview_progressbarTW_img").show()
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $('#avatar').change(function () {
+        console.log($(this)[0].files[0])
+        $("#filename").html($(this)[0].files[0].name)
+    }
+    );
+
+    $("#imgInp").change(function () {
+        //當檔案改變後，做一些事 
+        readURL(this);   // this代表<input id="imgInp">
+    });
+
+
+
+
+</script>

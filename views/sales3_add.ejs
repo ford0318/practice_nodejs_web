@@ -1,0 +1,35 @@
+<%- include('parts/head.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<div class="container">
+<% if(typeof success!=='undefined'){ %>
+<div class="alert alert-<%= infotype %>" role="alert">
+<%= info %>
+</div>
+<% } %>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <form method="POST">
+                <div class="form-group">
+                  <label for="sales_id">Sales ID</label>
+                  <input type="text" class="form-control" id="sales_id" name="sales_id" value="<%= (locals.body && locals.body.sales_id) ? body.sales_id : '' %>">
+                  <small id="sale_id_sm" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="name">Sales Name</label>
+                  <input type="text" class="form-control" id="name" name="name"  value="<%= locals.body ? body.name : '' %>">
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Sales Birthday</label>
+                    <input type="text" class="form-control" id="birthday" name="birthday"  value="<%= locals.body ? body.birthday : '' %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+</div>
+<%- include('parts/foot') %>

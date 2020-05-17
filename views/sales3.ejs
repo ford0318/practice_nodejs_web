@@ -1,0 +1,60 @@
+<%- include('parts/head.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+<div class="container">
+
+<div class="row">
+    <div class="col-md-6">
+        <% if(locals.listInfo){ %>
+        <div id="listInfo" class="alert alert-<%= listInfo.type %>" role="alert">
+            <%= listInfo.text %>
+        </div>
+        <script>
+            setTimeout(function(){
+                $('#listInfo').slideUp()
+            },3000);
+        </script>
+        <% } %>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><i class="far fa-trash-alt"></i></th>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Birthday</th>
+                    <th><i class="far fa-edit"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i in rows){ %>
+                <tr>
+                    <td><a href="javascript:delete_one(<%= rows[i].sid %>)"><i class="far fa-trash-alt"></i></a></td>
+                    <td><%= rows[i].sid %></td>
+                    <td><%= rows[i].sales_id %></td>
+                    <td><%= rows[i].name %></td>
+                    <td><%= rows[i].birthday2 %></td>
+                    <td><a href="/sales3/edit/<%= rows[i].sid %>"><i class="far fa-edit"></i></a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+<script>
+    function delete_one(sid){
+        if(confirm(`Are you sure to delete ${sid}'s DATA?`)) {
+            location.href ='/sales3/remove/' +sid;
+        }
+    }
+
+</script>
+<%- include('parts/foot') %>

@@ -1,0 +1,4 @@
+<%# views/try-querystring.ejs %>
+<% for(let s in urlParts.query){ %>
+    <p> <%= s + ': ' + urlParts.query[s] %></p>
+<% } %>
